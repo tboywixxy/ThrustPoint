@@ -128,7 +128,7 @@ export default function Home() {
             <div><span className="kicker">Our services</span><h2>One place for what matters.</h2></div>
             <p>Choose what you need. We&apos;ll guide you through the rest.</p>
           </div>
-          <div className="services-grid">
+          <div className="services-grid" aria-label="Available services">
             {services.map((service) => <ServiceCard key={service.title} {...service} />)}
           </div>
           <div className="section-note">
