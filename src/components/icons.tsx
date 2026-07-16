@@ -1,7 +1,7 @@
 export type IconName =
   | "exchange" | "gift" | "plane" | "wallet" | "signal" | "tv"
   | "shield" | "globe" | "sparkle" | "cursor" | "check" | "clock"
-  | "sun" | "moon";
+  | "sun" | "moon" | "phone" | "mail" | "location";
 
 const paths: Record<IconName, React.ReactNode> = {
   exchange: <><path d="M7 7h11m0 0-3-3m3 3-3 3M17 17H6m0 0 3 3m-3-3 3-3" /></>,
@@ -18,6 +18,9 @@ const paths: Record<IconName, React.ReactNode> = {
   clock: <><circle cx="12" cy="12" r="9" /><path d="M12 7v5l3 2" /></>,
   sun: <><circle cx="12" cy="12" r="4" /><path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.65 17.65l1.42 1.42M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.65 6.35l1.42-1.42" /></>,
   moon: <><path d="M20 15.5A8.5 8.5 0 0 1 8.5 4 8.5 8.5 0 1 0 20 15.5Z" /></>,
+  phone: <><path d="M8.4 3.5 10.2 8 7.8 9.5a15.8 15.8 0 0 0 6.7 6.7l1.5-2.4 4.5 1.8v3a2 2 0 0 1-2.2 2A17 17 0 0 1 3.4 5.7a2 2 0 0 1 2-2.2Z" /></>,
+  mail: <><rect x="3" y="5" width="18" height="14" rx="2" /><path d="m4 7 8 6 8-6" /></>,
+  location: <><path d="M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0Z" /><circle cx="12" cy="10" r="2.5" /></>,
 };
 
 export function Icon({ name }: { name: IconName }) {

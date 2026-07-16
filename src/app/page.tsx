@@ -1,25 +1,29 @@
+import Image from "next/image";
 import { ArrowUpRight, Icon, type IconName } from "@/components/icons";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 
-const services: Array<{ title: string; description: string; icon: IconName }> = [
-  { title: "Naira ↔ Cedis", description: "Exchange securely in both directions.", icon: "exchange" },
-  { title: "Gift Cards", description: "Buy and sell popular gift cards.", icon: "gift" },
-  { title: "Flight Tickets", description: "Local and international bookings.", icon: "plane" },
-  { title: "Betting Wallets", description: "Fund supported betting platforms.", icon: "wallet" },
-  { title: "Airtime & Data", description: "Local and international top-ups.", icon: "signal" },
-  { title: "TV Subscriptions", description: "Quick DStv and GOtv payments.", icon: "tv" },
+const services: Array<{ title: string; description: string; icon: IconName; image: string; imageAlt: string }> = [
+  { title: "Naira ↔ Cedis", description: "Exchange securely in both directions.", icon: "exchange", image: "/services/currency-exchange.png", imageAlt: "Customer completing a currency exchange on her phone" },
+  { title: "Gift Cards", description: "Buy and sell popular gift cards.", icon: "gift", image: "/services/gift-cards.png", imageAlt: "Selection of digital gift cards" },
+  { title: "Flight Tickets", description: "Local and international bookings.", icon: "plane", image: "/services/flight-tickets.png", imageAlt: "Traveler preparing for a flight at an airport" },
+  { title: "Betting Wallets", description: "Fund supported betting platforms.", icon: "wallet", image: "/services/betting-wallets.png", imageAlt: "Sports fan managing a betting wallet on a phone" },
+  { title: "Airtime & Data", description: "Local and international top-ups.", icon: "signal", image: "/services/airtime-data.png", imageAlt: "Mobile phone being used for an airtime and data top-up" },
+  { title: "TV Subscriptions", description: "Quick DStv and GOtv payments.", icon: "tv", image: "/services/tv-subscriptions.png", imageAlt: "Family enjoying television at home" },
 ];
 
-function ServiceCard({ title, description, icon }: (typeof services)[number]) {
+function ServiceCard({ title, description, icon, image, imageAlt }: (typeof services)[number]) {
   return (
     <article className="service-card">
-      <div className="service-card-top">
-        <div className="service-icon"><Icon name={icon} /></div>
+      <div className="service-image">
+        <Image src={image} alt={imageAlt} fill sizes="(max-width: 700px) 84vw, (max-width: 1000px) 50vw, 33vw" />
         <span className="service-status">Available</span>
+        <div className="service-icon"><Icon name={icon} /></div>
       </div>
-      <div><h3>{title}</h3><p>{description}</p></div>
-      <span className="card-arrow" aria-hidden="true"><ArrowUpRight /></span>
+      <div className="service-card-body">
+        <div><h3>{title}</h3><p>{description}</p></div>
+        <span className="card-arrow" aria-hidden="true"><ArrowUpRight /></span>
+      </div>
     </article>
   );
 }
@@ -31,6 +35,37 @@ export default function Home() {
 
       <section className="hero">
         <div className="container hero-grid">
+          <svg className="world-map" viewBox="0 0 720 430" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+            <defs>
+              <pattern id="map-dots" width="10" height="10" patternUnits="userSpaceOnUse">
+                <circle cx="3" cy="3" r="2.1" fill="currentColor" />
+              </pattern>
+              <linearGradient id="route-gradient" x1="0" x2="1">
+                <stop offset="0" stopColor="var(--brand)" />
+                <stop offset="1" stopColor="var(--brand-hover)" />
+              </linearGradient>
+            </defs>
+            <g className="map-land">
+              <path data-continent="north-america" d="M28 98 59 52l53-22 54 12 30 31-8 26-35 2-19 25-29 13-14 39-25-13-7-33-28-13Z" />
+              <path data-continent="greenland" d="m190 30 30-16 27 14-9 25-31 7-23-12Z" />
+              <path data-continent="south-america" d="m143 190 35 6 27 32-9 42-15 44-21 51-17-24 6-45-17-35-12-44Z" />
+              <path data-continent="europe" d="m305 99 17-14 16-20 31 4 10 20-19 12-20-5-18 13Z" />
+              <path data-continent="africa" d="m326 119 47-7 27 31-8 54-21 52-26 44-19-33-11-46-17-50Z" />
+              <path data-continent="asia" d="m383 80 38-25 53 5 29-15 70 11 61 29 25 31-30 24-40-8-30 26-38-12-26 25-38-18-27-30-38-5Z" />
+              <path data-continent="japan" d="m627 164 8 6-5 25-8 10-3-13 5-13Z" />
+              <path data-continent="australia" d="m555 265 43-18 36 20 9 35-31 22-46-6-25-26Z" />
+              <path data-continent="madagascar" d="m413 265 8 13-5 28-9 12-4-21Z" />
+              <path data-continent="antarctica" d="m98 389 72-8 69 7 70-5 74 8 82-7 72 7 72-5 51 15-79 9-91-2-89 6-83-7-86 5-77-8Z" />
+            </g>
+            <path className="route-line" d="M105 126 C205 54 260 82 340 91 S488 68 589 112" />
+            <path className="route-line route-line-secondary" d="M160 246 C250 174 306 184 354 177 S493 217 591 282" />
+            <circle className="route-point" cx="105" cy="126" r="6" />
+            <circle className="route-point" cx="340" cy="91" r="6" />
+            <circle className="route-point" cx="589" cy="112" r="6" />
+            <circle className="route-point" cx="160" cy="246" r="6" />
+            <circle className="route-point" cx="354" cy="177" r="6" />
+            <circle className="route-point" cx="591" cy="282" r="6" />
+          </svg>
           <div className="hero-copy">
             <div className="eyebrow">Ghana · Nigeria · Beyond</div>
             <h1>Move money and handle life, <span>across borders.</span></h1>
@@ -46,29 +81,6 @@ export default function Home() {
           </div>
 
           <div className="hero-visual" aria-label="Cross-border payments and services dashboard preview">
-            <svg className="world-map" viewBox="0 0 620 430" aria-hidden="true">
-              <defs>
-                <pattern id="map-dots" width="10" height="10" patternUnits="userSpaceOnUse">
-                  <circle cx="3" cy="3" r="2.1" fill="currentColor" />
-                </pattern>
-                <linearGradient id="route-gradient" x1="0" x2="1">
-                  <stop offset="0" stopColor="var(--brand)" />
-                  <stop offset="1" stopColor="var(--brand-hover)" />
-                </linearGradient>
-              </defs>
-              <g className="map-land">
-                <path d="M55 92 88 55l71-24 69 17 27 34-13 28-41 4-22 30-29 7-21 46-25-8-14-45-27-15Z" />
-                <path d="m194 201 43 15 32 45-14 66-27 62-24-24 6-54-27-61Z" />
-                <path d="m292 87 46-31 52 14 27-19 89 5 57 39-20 32-58 8-24 35-50-8-28 19-42-26-47 1-21-33Z" />
-                <path d="m356 181 57 7 28 52-17 73-36 60-24-38-18-71-25-36Z" />
-                <path d="m490 290 54-15 39 27-18 39-61 3-27-27Z" />
-              </g>
-              <path className="route-line" d="M116 131 C210 78 272 218 365 183 S468 89 545 120" />
-              <circle className="route-point" cx="116" cy="131" r="6" />
-              <circle className="route-point" cx="365" cy="183" r="6" />
-              <circle className="route-point" cx="545" cy="120" r="6" />
-            </svg>
-
             <div className="transaction-card">
               <div className="transaction-head">
                 <div><small>Cross-border transfer</small><strong>Payment summary</strong></div>
@@ -165,6 +177,35 @@ export default function Home() {
             <p>Exchange, travel and payments without the runaround.</p>
           </div>
           <a className="button button-light" href="#services">Get started <ArrowUpRight /></a>
+        </div>
+      </section>
+
+      <section className="story-banner" aria-labelledby="story-banner-title">
+        <Image
+          className="story-banner-image"
+          src="/travel-hero.jpg"
+          alt="Airplane wing above the clouds at sunrise"
+          fill
+          sizes="100vw"
+        />
+        <div className="story-banner-overlay" />
+        <div className="container story-banner-frame">
+          <div className="story-banner-topline">
+            <span>Money · travel · everyday essentials</span>
+            <div className="story-banner-brand" aria-label="ThrustPoint Global">
+              <Image src="/Thrustpoint_white_transparent.png" alt="" width={62} height={52} />
+              <span>ThrustPoint<br />Global</span>
+            </div>
+          </div>
+          <div className="story-banner-copy">
+            <span className="story-banner-kicker">Built for movement</span>
+            <h2 id="story-banner-title">Wherever life takes you, <em>move with confidence.</em></h2>
+            <p>One trusted point for the payments, plans, and possibilities that keep your world moving.</p>
+          </div>
+          <div className="story-banner-action">
+            <span>Ghana to Nigeria.<br />Home to anywhere.</span>
+            <a className="button button-light" href="/contact">Start your journey <ArrowUpRight /></a>
+          </div>
         </div>
       </section>
 

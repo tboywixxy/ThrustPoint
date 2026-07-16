@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { ContactForm } from "@/components/contact-form";
 import { Icon } from "@/components/icons";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
+import { ThemeLogo } from "@/components/theme-logo";
 
 export const metadata: Metadata = {
   title: "Contact Us | ThrustPoint Global",
@@ -15,12 +17,27 @@ export default function ContactPage() {
       <SiteHeader active="contact" />
 
       <section className="contact-hero">
+        <Image
+          className="contact-hero-background"
+          src="/services/customer-support.png"
+          alt="ThrustPoint customer support specialist assisting a client"
+          fill
+          priority
+          sizes="100vw"
+        />
+        <div className="contact-hero-overlay" />
         <div className="container contact-hero-inner">
-          <div>
+          <div className="contact-hero-copy">
             <span className="kicker">Contact ThrustPoint</span>
             <h1>Let&apos;s move things <span>forward.</span></h1>
           </div>
-          <p>Questions, requests or support—tell us what you need and our team will guide you from there.</p>
+          <ThemeLogo
+            className="contact-hero-logo"
+            alt="ThrustPoint"
+            width={180}
+            height={180}
+            priority
+          />
         </div>
       </section>
 
@@ -33,17 +50,17 @@ export default function ContactPage() {
               <p>Choose the channel that works best for you. We&apos;ll respond as soon as possible.</p>
             </div>
             <div className="contact-methods">
-              <a href="tel:+233201234567">
-                <span className="contact-method-icon"><Icon name="signal" /></span>
-                <span><small>Call us</small><strong>+233 20 123 4567</strong></span>
+              <a href="tel:+233201473475">
+                <span className="contact-method-icon"><Icon name="phone" /></span>
+                <span><small>Call us</small><strong>+233 20 147 3475</strong></span>
               </a>
-              <a href="mailto:hello@thrustpoint.com">
-                <span className="contact-method-icon"><Icon name="cursor" /></span>
-                <span><small>Email us</small><strong>hello@thrustpoint.com</strong></span>
+              <a href="mailto:support@thrustpoint.co">
+                <span className="contact-method-icon"><Icon name="mail" /></span>
+                <span><small>Email us</small><strong>support@thrustpoint.co</strong></span>
               </a>
               <div>
-                <span className="contact-method-icon"><Icon name="globe" /></span>
-                <span><small>Head office</small><strong>14 Independence Avenue<br />Accra, Ghana</strong></span>
+                <span className="contact-method-icon"><Icon name="location" /></span>
+                <span><small>Head office</small><strong>Aku Si Ka Plaza<br />Broadcasting</strong></span>
               </div>
             </div>
             <div className="response-note"><Icon name="clock" /><span><small>Response standard</small><strong>Clear, guided support during business hours</strong></span></div>

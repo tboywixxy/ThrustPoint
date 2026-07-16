@@ -1,8 +1,8 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { ThemeLogo } from "@/components/theme-logo";
 import { ThemeToggle } from "@/components/theme-toggle";
 
 type SiteHeaderProps = {
@@ -11,6 +11,7 @@ type SiteHeaderProps = {
 
 export function SiteHeader({ active }: SiteHeaderProps) {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
     function closeOnEscape(event: KeyboardEvent) {
@@ -29,15 +30,22 @@ export function SiteHeader({ active }: SiteHeaderProps) {
     };
   }, []);
 
+  useEffect(() => {
+    if (active !== "contact") return;
+
+    const updateHeader = () => setScrolled(window.scrollY > 18);
+    updateHeader();
+    window.addEventListener("scroll", updateHeader, { passive: true });
+    return () => window.removeEventListener("scroll", updateHeader);
+  }, [active]);
+
   const closeMenu = () => setMenuOpen(false);
 
   return (
-    <header className={`site-header${menuOpen ? " menu-open" : ""}`}>
+    <header className={`site-header${active === "contact" ? " contact-overlay" : ""}${scrolled ? " scrolled" : ""}${menuOpen ? " menu-open" : ""}`}>
       <div className="container header-inner">
         <Link className="brand" href="/#top" aria-label="ThrustPoint home" onClick={closeMenu}>
-          <span className="logo-wrap">
-            <Image src="/ThrustPoint_transparent.png" alt="" width={44} height={44} priority />
-          </span>
+          <ThemeLogo className="logo-wrap" width={44} height={44} priority />
           <span><strong>ThrustPoint</strong><small>Global Company LTD</small></span>
         </Link>
         <nav id="main-navigation" aria-label="Main navigation">
