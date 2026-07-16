@@ -1,0 +1,4 @@
+[build.environment]
+  # These values are public contact addresses rendered by the site, not secrets.
+  # Keep credential keys such as ZOHO_SMTP_PASSWORD covered by secret scanning.
+  SECRETS_SCAN_OMIT_KEYS = "ZOHO_SMTP_USER,CONTACT_RECEIVER_EMAIL"
