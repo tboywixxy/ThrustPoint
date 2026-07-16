@@ -68,7 +68,7 @@ export default function Home() {
           </svg>
           <div className="hero-copy">
             <div className="eyebrow">Ghana · Nigeria · Beyond</div>
-            <h1>Move money and handle life, <span>across borders.</span></h1>
+            <h1><span className="hero-heading-main">Move money and handle life,</span> <span className="hero-heading-accent">across borders.</span></h1>
             <p className="hero-text">Exchange Naira and Cedis, trade gift cards, book flights, and manage everyday payments from one trusted place.</p>
             <div className="hero-actions">
               <a className="button hero-cta" href="#services">Explore services <ArrowUpRight /></a>
