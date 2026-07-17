@@ -153,7 +153,6 @@ export default function Home() {
       <section className="process-section" id="process">
         <div className="container">
           <div className="process-heading">
-            <span className="kicker">Simple by design</span>
             <h2>Done in three steps.</h2>
             <p>Tell us what you need. We&apos;ll take it from there.</p>
           </div>

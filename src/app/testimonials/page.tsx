@@ -49,7 +49,6 @@ export default function TestimonialsPage() {
       <section className="testimonial-stories" id="stories">
         <div className="container stories-heading">
           <div>
-            <span className="kicker">In their own words</span>
             <h2>Don&apos;t take our word for it.<br /><span>Hear it from our customers.</span></h2>
           </div>
         </div>

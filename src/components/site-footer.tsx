@@ -25,7 +25,7 @@ export function SiteFooter() {
             <span className="footer-detail-icon"><Icon name="mail" /></span>
             <span>Email us</span>
           </div>
-          <a className="footer-detail-value" href="mailto:hello@thrustpoint.com">hello@thrustpoint.com</a>
+          <a className="footer-detail-value" href="mailto:support@thrustpoint.co">support@thrustpoint.co</a>
         </div>
         <address className="footer-detail">
           <div className="footer-detail-heading">
